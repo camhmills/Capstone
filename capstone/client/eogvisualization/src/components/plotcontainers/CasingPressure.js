@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { casePressureData } from '../../dataGrab';
 import CasingPressurePlot from '../plots/CasingPressurePlot';
 
+import { PlotDiv } from '../styled-components/PlotStyle';
+
 export default function CasingPressure(props) {
     const { caseData } = props;
-    const [liveTrack, setLiveTrack] = useState(false)
     const dispatch = useDispatch();
 
     useEffect(() => { 
@@ -17,12 +18,9 @@ export default function CasingPressure(props) {
     fetchData()
     }, [])
 
-
-
     return (
-        <div>
-        <button onClick = {() => setLiveTrack(!liveTrack)}>Live Tracking</button>
+        <PlotDiv>
         <CasingPressurePlot caseData = {caseData}/>
-        </div>
+        </PlotDiv>
     )
 }

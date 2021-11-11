@@ -177,7 +177,8 @@ export async function subscriptionData(){
             "Content-Type":"application/json"
         }, 
         body: JSON.stringify({
-            Subscription: `{
+            query: `subscription
+            {
                 newMeasurement
                 {
                     metric
@@ -188,6 +189,7 @@ export async function subscriptionData(){
             }`
         })
     })
+    console.log(data)
     let jsonData = await data.json();
     console.log(jsonData)
 }

@@ -15,20 +15,22 @@ export default function OilTempPlot(props) {
             </h2>     
         <Plot 
             data = {[
-            {
-                x: adjTempTime,
-                y: oilTempList,
-                type: 'scatter',
-                mode: 'lines',
-                marker: {color: 'green'},
-            },
-        ]}
+                        {
+                            x: adjTempTime,
+                            y: oilTempList,
+                            type: 'scatter',
+                            mode: 'lines',
+                            marker: { color: 'green' },
+                        },
+            ]}
             layout = {
                         {
                             width: 1500,
                             height: 860, 
                             title: 'Plotly', 
-                            bgcolor: '#282c34'
+                            color: '#FAFAFA',
+                            paper_bgcolor: '#282c34',
+                            plot_bgcolor: '#282c34',
                         }
                     }
         />

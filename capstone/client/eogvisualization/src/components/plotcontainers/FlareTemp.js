@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { flareTempData } from '../../dataGrab';
 import FlareTempPlot from '../plots/FlareTempPlot';
+import { PlotDiv } from '../styled-components/PlotStyle';
 
 export default function FlareTemp(props) {
     const { flareData } = props;
-    const [liveTrack, setLiveTrack] = useState(false)
     const dispatch = useDispatch();
 
     useEffect(() => { 
@@ -20,9 +20,8 @@ export default function FlareTemp(props) {
 
 
     return (
-        <div>
-        <button onClick = {() => setLiveTrack(!liveTrack)}>Live Tracking</button>
+        <PlotDiv>
         <FlareTempPlot flareData = {flareData}/>
-        </div>
+        </PlotDiv>
     )
 }

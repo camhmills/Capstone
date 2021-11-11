@@ -15,20 +15,22 @@ export default function injValvePlot(props) {
             </h2>     
         <Plot 
             data = {[
-            {
-                x: adjTempTime,
-                y: injValveList,
-                type: 'scatter',
-                mode: 'lines',
-                marker: {color: 'green'},
-            },
+                        {
+                            x: adjTempTime,
+                            y: injValveList,
+                            type: 'scatter',
+                            mode: 'lines',
+                            marker: {color: 'green'},
+                        },
         ]}
             layout = {
                         {
                             width: 1500,
                             height: 860, 
                             title: 'Plotly', 
-                            bgcolor: '#282c34'
+                            color: '#FAFAFA',
+                            paper_bgcolor: '#282c34',
+                            plot_bgcolor: '#282c34',
                         }
                     }
         />

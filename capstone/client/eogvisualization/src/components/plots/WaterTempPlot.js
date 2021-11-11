@@ -15,20 +15,22 @@ export default function WaterTempPlot(props) {
             </h2>     
         <Plot 
             data = {[
-            {
-                x: adjTempTime,
-                y: waterTempList,
-                type: 'scatter',
-                mode: 'lines',
-                marker: {color: 'green'},
-            },
+                        {
+                            x: adjTempTime,
+                            y: waterTempList,
+                            type: 'scatter',
+                            mode: 'lines',
+                            marker: {color: 'green'},
+                        },
         ]}
             layout = {
                         {
                             width: 1500,
                             height: 860, 
                             title: 'Plotly', 
-                            bgcolor: '#282c34'
+                            color: '#FAFAFA',
+                            paper_bgcolor: '#282c34',
+                            plot_bgcolor: '#282c34',
                         }
                     }
         />

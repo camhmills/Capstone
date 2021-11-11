@@ -11,24 +11,26 @@ export default function CasingPressurePlot(props) {
     return (
         <div>
             <h2>
-                {currentTemp} F
+                Current Temperature: {currentTemp} F
             </h2>     
         <Plot 
             data = {[
-            {
-                x: adjTempTime,
-                y: CasingPressureList,
-                type: 'scatter',
-                mode: 'lines',
-                marker: {color: 'green'},
-            },
+                        {
+                            x: adjTempTime,
+                            y: CasingPressureList,
+                            type: 'scatter',
+                            mode: 'lines',
+                            marker: {color: '#FAFAFA'},
+                        },
         ]}
             layout = {
                         {
                             width: 1500,
                             height: 860, 
                             title: 'Plotly', 
-                            bgcolor: '#282c34'
+                            color: '#FAFAFA',
+                            paper_bgcolor: '#282c34',
+                            plot_bgcolor: '#282c34',
                         }
                     }
         />

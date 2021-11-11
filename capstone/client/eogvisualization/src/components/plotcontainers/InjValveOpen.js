@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 
 import { injValveOpenData } from '../../dataGrab';
 import InjValveOpenPlot from '../plots/InjValveOpenPlot';
+import { PlotDiv } from '../styled-components/PlotStyle';
 
 export default function CasingPressure(props) {
     const { injValveData } = props;
-    const [liveTrack, setLiveTrack] = useState(false)
     const dispatch = useDispatch();
 
     useEffect(() => { 
@@ -20,9 +20,8 @@ export default function CasingPressure(props) {
 
 
     return (
-        <div>
-        <button onClick = {() => setLiveTrack(!liveTrack)}>Live Tracking</button>
+        <PlotDiv>
         <InjValveOpenPlot injValveData = {injValveData}/>
-        </div>
+        </PlotDiv>
     )
 }

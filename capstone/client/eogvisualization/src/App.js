@@ -9,6 +9,7 @@ import TubingPressure from './components/plotcontainers/TubingPressure';
 import WaterTemp from './components/plotcontainers/WaterTemp';
 import CasingPressure from './components/plotcontainers/CasingPressure';
 import { MainContainerDiv } from './components/styled-components/MainContainer';
+import Navbar from './components/Navbar';
 
 function App() {
   const oilTempData = useSelector(state => state.OilTempReducer)
@@ -21,6 +22,7 @@ function App() {
   return (
     <Router>
       <MainContainerDiv>
+      <Navbar/>  
       <Routes>
         <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
         <Route path = '/casingpressure' element = {<CasingPressure caseData = {caseData}/>}/>
