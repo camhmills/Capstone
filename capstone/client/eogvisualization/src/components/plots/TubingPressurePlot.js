@@ -1,15 +1,13 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
 
-export default function OilTempPlot(props) {
-    const { oilTempData } = props;
-    console.log(oilTempData)
-    const oilTempList = oilTempData[0]?.data?.getMeasurements?.map(({value}) => value);
-    const oilTempTime = oilTempData[0]?.data?.getMeasurements?.map(({at}) => new Date(at));
-    const adjTempTime = oilTempTime?.slice(Math.max(oilTempTime?.length - 3600, 0))
-    console.log(adjTempTime)
+export default function TubingPressurePlot(props) {
+    const { tubeData } = props;
+    const tubeList = tubeData[0]?.data?.getMeasurements?.map(({value}) => value);
+    const tubeTime = tubeData[0]?.data?.getMeasurements?.map(({at}) => new Date(at));
+    const adjTempTime = tubeTime?.slice(Math.max(tubeTime?.length - 3600, 0))
     // make x axis time based
-    let currentTemp = oilTempList?.at(-1);
+    let currentTemp = tubeList?.at(-1);
     return (
         <div>
             <h2>
@@ -19,7 +17,7 @@ export default function OilTempPlot(props) {
             data = {[
             {
                 x: adjTempTime,
-                y: oilTempList,
+                y: tubeList,
                 type: 'scatter',
                 mode: 'lines',
                 marker: {color: 'green'},

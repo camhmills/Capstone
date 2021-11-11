@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { oilData } from '../dataGrab';
-import OilTempPlot from './OilTempPlot';
+import { oilData } from '../../dataGrab';
+import OilTempPlot from '../plots/OilTempPlot';
 
 export default function OilTemp(props) {
     const {oilTempData} = props;
@@ -15,7 +15,7 @@ export default function OilTemp(props) {
       dispatch({type: "ADD_OIL_DATA", payload: response});
     }
     fetchData()
-    }, [liveTrack ? oilTempData : null])
+    }, [])
 
 
 

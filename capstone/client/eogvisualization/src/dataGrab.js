@@ -28,7 +28,7 @@ export const oilData = async () => {
     return oilTempData;
 }
 
-export async function waterTempData(){
+export async function waterData(){
     const url = 'https://react.eogresources.com/graphql'
     let data = await fetch(url, {
         method: 'POST', 
@@ -53,8 +53,8 @@ export async function waterTempData(){
             }`
         })
     })
-    const jsonCasePresData = await data.json();
-    return jsonCasePresData;
+    const waterTempData = await data.json();
+    return waterTempData;
 }
 export async function injValveOpenData(){
     const url = 'https://react.eogresources.com/graphql'
@@ -81,8 +81,8 @@ export async function injValveOpenData(){
             }`
         })
     })
-    const jsonCasePresData = await data.json();
-    return jsonCasePresData;
+    const injValveData = await data.json();
+    return injValveData;
 }
 export async function flareTempData(){
     const url = 'https://react.eogresources.com/graphql'
@@ -109,8 +109,8 @@ export async function flareTempData(){
             }`
         })
     })
-    const jsonCasePresData = await data.json();
-    return jsonCasePresData;
+    const flareTempData = await data.json();
+    return flareTempData;
 }
 export async function tubingPressureData(){
     const url = 'https://react.eogresources.com/graphql'
@@ -137,8 +137,8 @@ export async function tubingPressureData(){
             }`
         })
     })
-    const jsonCasePresData = await data.json();
-    return jsonCasePresData;
+    const tubingPressureData = await data.json();
+    return tubingPressureData;
 }
 export async function casePressureData(){
     const url = 'https://react.eogresources.com/graphql'
@@ -165,8 +165,8 @@ export async function casePressureData(){
             }`
         })
     })
-    const jsonCasePresData = await data.json();
-    return jsonCasePresData;
+    const casePressureData = await data.json();
+    return casePressureData;
 }
 
 export async function subscriptionData(){
