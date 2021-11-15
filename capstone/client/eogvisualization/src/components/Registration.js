@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 
+
 export default function Login() {
 
     const [formData, setFormData] = useState({ username: "", password: "", email: "" });
@@ -18,13 +19,50 @@ export default function Login() {
         }
     }
 
+    const clearForm = () => {
+        document.getElementById('userForm').reset();
+    }
+
+    const clearState = () => {
+        setFormData({ username: "", password: "", email: "" });
+    }
+
+    const clearData = () => {
+        clearForm();
+        clearState();
+    }
+
     return (
         <div>
-            <form onSubmit={onSubmitForm}>
-                <input type = "text" name = "username" placeholder = "username" value = {formData?.username} onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}/>
-                <input type = "text" name = "password" placeholder = "password" value = {formData?.password} onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}/>
-                <input type = "text" name = "email" placeholder = "email" value = {formData?.email} onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}/>
-                <button>Submit</button>
+            <form id = "userForm" onSubmit = {onSubmitForm}>
+                <input 
+                    type = "text" 
+                    name = "username" 
+                    placeholder = "username" 
+                    onChange={(e) => 
+                        setFormData(
+                            {...formData, [e.target.name]: e.target.value}
+                        )}
+                />
+                <input
+                    type = "text" 
+                    name = "password" 
+                    placeholder = "password" 
+                    onChange={(e) => 
+                        setFormData(
+                            {...formData, [e.target.name]: e.target.value}
+                        )}
+                />
+                <input 
+                    type = "text" 
+                    name = "email" 
+                    placeholder = "email" 
+                    onChange={(e) => 
+                        setFormData(
+                            {...formData, [e.target.name]: e.target.value}
+                        )}
+                />
+                <button onClick={() => clearForm()}>Submit</button>
             </form>
         </div>
     )

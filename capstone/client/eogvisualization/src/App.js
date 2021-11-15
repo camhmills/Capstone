@@ -11,6 +11,7 @@ import CasingPressure from './components/plotcontainers/CasingPressure';
 import { MainContainerDiv } from './components/styled-components/MainContainer';
 import Navbar from './components/Navbar';
 import Registration from './components/Registration';
+import Login from './components/Login';
 
 function App() {
   const oilTempData = useSelector(state => state.OilTempReducer)
@@ -25,6 +26,7 @@ function App() {
       <MainContainerDiv>
       <Navbar/>  
       <Routes>
+        <Route path= '/login' element = {<Login/>}/>
         <Route path = '/register' element = {<Registration/>}/>
         <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
         <Route path = '/casingpressure' element = {<CasingPressure caseData = {caseData}/>}/>
