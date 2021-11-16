@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import OilTemp from './components/plotcontainers/OilTemp';
@@ -20,13 +20,15 @@ function App() {
   const waterTempData = useSelector(state => state.WaterTempReducer)
   const flareData = useSelector(state => state.FlareTempReducer)
   const injValveData = useSelector(state => state.InjValveOpenReducer)
+  const loginStatus = useSelector(state => state.LoginReducer)
+
 
   return (
     <Router>
       <MainContainerDiv>
-      <Navbar/>  
+      <Navbar/>
       <Routes>
-        <Route path= '/login' element = {<Login/>}/>
+        <Route path = '/login' element = {<Login/>}/>
         <Route path = '/register' element = {<Registration/>}/>
         <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
         <Route path = '/casingpressure' element = {<CasingPressure caseData = {caseData}/>}/>

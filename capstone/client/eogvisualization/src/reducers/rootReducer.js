@@ -6,6 +6,7 @@ import FlareTempReducer from './FlareTempReducer'
 import InjValveOpenReducer from './InjValveOpen';
 import TubingPressureReducer from './TubingPressureReducer'
 import WaterTempReducer from './WaterTempReducer'
+import LoginReducer from './LoginReducer'
 
 const rootReducer = combineReducers({
     OilTempReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     FlareTempReducer,
     InjValveOpenReducer,
     TubingPressureReducer,
-    WaterTempReducer
+    WaterTempReducer,
+    LoginReducer
 })
 
 export default rootReducer;

@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import { FormContainer, FormDiv, InputStyle, SubmitButton } from './styled-components/FormStyle';
 
 export default function Login() {
-
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({username: "", password: ""})
 
     const onSubmitForm = async (e) => {
@@ -12,7 +14,12 @@ export default function Login() {
                 headers : { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             })
-            console.log(response)
+            if (response.ok) {
+                dispatch({type:"LOGIN"})
+            }
+            else {
+                window.alert("Login Failed. Please Try Again.")
+            }
         }
         catch (err) {
             console.log(err.message)
@@ -25,12 +32,22 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <form id = "userForm" onSubmit = {onSubmitForm}>
-                <input type = "text" placeholder = "username" name = "username" onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}/>
-                <input type = "password" placeholder = "password" name = "password" onChange = {(e) => setFormData({...formData, [e.target.name]: e.target.value})}/>
-                <button onClick = {() => clearForm()}>Submit</button>
-            </form>
-        </div>
+        <FormDiv>
+            <FormContainer id = "userForm" onSubmit = {onSubmitForm}>
+                <InputStyle 
+                    type = "text"
+                    placeholder = "username" 
+                    name = "username" 
+                    onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}
+                />
+                <InputStyle 
+                    type = "password" 
+                    placeholder = "password" 
+                    name = "password" 
+                    onChange = {(e) => setFormData({...formData, [e.target.name]: e.target.value})}
+                />
+                <SubmitButton onClick = {() => clearForm()}>Submit</SubmitButton>
+            </FormContainer>
+        </FormDiv>
     )
 }

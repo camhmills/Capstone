@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { HeaderDiv } from './styled-components/NavbarStyle'
+import { HeaderDiv, TitleH } from './styled-components/NavbarStyle'
 
 import {subscriptionData} from '../dataGrab'
 
@@ -13,7 +13,9 @@ export default function Navbar() {
         }, [])
     return (
         <HeaderDiv>
-            Header
+            <TitleH>
+                GraphIt
+            </TitleH>
         </HeaderDiv>
     )
 }

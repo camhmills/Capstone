@@ -5,5 +5,12 @@ display: flex;
 flex-direction: row;
 height: 100px;
 width: 100vw;
-background-color: #1f3541
+background-color: #2367b1;
+text-align: center;
+`
+
+export const TitleH = styled.h2`
+color: #ff4a3b;
+margin-left: auto;
+margin-right: auto;
 `

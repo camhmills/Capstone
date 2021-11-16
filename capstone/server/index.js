@@ -26,7 +26,7 @@ app.post('/registration', async (req, res) => {
 app.delete('/deleteuser', async (req, res) => {
     try {
         const { username } = req.body;
-        const delUser = await pool.query("DELETE FROM userinfo WHERE ID = ($1)", [username]);
+        const delUser = await pool.query("DELETE FROM userinfo WHERE username = ($1)", [username]);
         res.json(delUser)
     } catch (err) {
         console.log(err.message);
@@ -45,10 +45,10 @@ app.post('/userlogin', async (req, res) => {
         }
         try {
             if (await bcrypt.compare(password, user.password)) {
-                res.send('Success')
+                res.status(200).send(console.log('Success'))
             }
             else {
-                res.send('Login Failed')
+                res.status(404).send(console.log('Login Failed'))
             }
         } catch {
             res.status(500).send()
