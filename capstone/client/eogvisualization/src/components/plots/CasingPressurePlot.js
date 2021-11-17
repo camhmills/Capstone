@@ -9,7 +9,7 @@ export default function CasingPressurePlot(props) {
     // make x axis time based
     let currentTemp = CasingPressureList?.at(-1);
     return (
-        <div>
+        <>
             <h2>
                 Current Temperature: {currentTemp} F
             </h2>     
@@ -34,6 +34,6 @@ export default function CasingPressurePlot(props) {
                         }
                     }
         />
-        </div>
+        </>
     )
 }

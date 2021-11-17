@@ -6,8 +6,10 @@ export default function Login() {
 
     const [formData, setFormData] = useState({ username: "", password: "", confirmPassword: "", email: "" });
 
-    const buttonStatus = formData.password.length > 0 && formData.password === formData.confirmPassword;
-    console.log(buttonStatus)
+    //buttuon disabled condition
+    const buttonStatus = formData.password.length > 0 
+    && formData.password === formData.confirmPassword
+    && formData.email.search('@') !== -1;
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -39,6 +41,9 @@ export default function Login() {
     return (
         <FormDiv>
             <FormContainer id = "userForm" onSubmit = {onSubmitForm}>
+            <h2>
+                Register
+            </h2>
                 <InputStyle 
                     type = "text" 
                     name = "username" 

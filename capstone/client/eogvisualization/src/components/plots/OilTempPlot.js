@@ -22,6 +22,13 @@ export default function OilTempPlot(props) {
                             mode: 'lines',
                             marker: { color: 'green' },
                         },
+                        {
+                            x: adjTempTime,
+                            y: oilTempList+100,
+                            type: 'scatter',
+                            mode: 'lines',
+                            marker: { color: 'blue' },
+                        },
             ]}
             layout = {
                         {

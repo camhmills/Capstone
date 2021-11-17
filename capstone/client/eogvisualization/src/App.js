@@ -8,7 +8,7 @@ import FlareTemp from './components/plotcontainers/FlareTemp';
 import TubingPressure from './components/plotcontainers/TubingPressure';
 import WaterTemp from './components/plotcontainers/WaterTemp';
 import CasingPressure from './components/plotcontainers/CasingPressure';
-import { MainContainerDiv } from './components/styled-components/MainContainer';
+import { MainContainerDiv, SubContainer } from './components/styled-components/MainContainer';
 import Navbar from './components/Navbar';
 import Registration from './components/Registration';
 import Login from './components/Login';
@@ -21,22 +21,25 @@ function App() {
   const flareData = useSelector(state => state.FlareTempReducer)
   const injValveData = useSelector(state => state.InjValveOpenReducer)
   const loginStatus = useSelector(state => state.LoginReducer)
-
+  console.log(loginStatus.loggedin)
 
   return (
     <Router>
       <MainContainerDiv>
       <Navbar/>
-      <Routes>
-        <Route path = '/login' element = {<Login/>}/>
-        <Route path = '/register' element = {<Registration/>}/>
-        <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
-        <Route path = '/casingpressure' element = {<CasingPressure caseData = {caseData}/>}/>
-        <Route path = '/flaretemp' element = {<FlareTemp flareData = {flareData}/>}/>
-        <Route path = '/injvalveopen' element = {<InjValveOpen injValveData = {injValveData}/>}/>
-        <Route path = '/tubingpressure' element = {<TubingPressure tubeData = {tubeData}/>}/>
-        <Route exact path = '/watertemp' element = {<WaterTemp waterTempData = {waterTempData}/>}/>
-      </Routes>
+      <SubContainer>
+        <Routes>
+          <Route path = '/oil' render = {() => loginStatus.loggedin ? <OilTemp oilTempData = {oilTempData}/> : <Login/>}/>
+          <Route path = '/login' element = {<Login/>}/>
+          <Route path = '/register' element = {<Registration/>}/>
+          <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
+          <Route path = '/casingpressure' element = {<CasingPressure caseData = {caseData}/>}/>
+          <Route path = '/flaretemp' element = {<FlareTemp flareData = {flareData}/>}/>
+          <Route path = '/injvalveopen' element = {<InjValveOpen injValveData = {injValveData}/>}/>
+          <Route path = '/tubingpressure' element = {<TubingPressure tubeData = {tubeData}/>}/>
+          <Route exact path = '/watertemp' element = {<WaterTemp waterTempData = {waterTempData}/>}/>
+        </Routes>
+      </SubContainer>
     </MainContainerDiv> 
     </Router>
   );

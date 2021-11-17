@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { oilData } from '../../dataGrab';
 import OilTempPlot from '../plots/OilTempPlot';
+import { PlotDiv } from '../styled-components/PlotStyle';
 
 export default function OilTemp(props) {
     const {oilTempData} = props;
@@ -20,9 +21,9 @@ export default function OilTemp(props) {
 
 
     return (
-        <div>
+        <PlotDiv>
         <button onClick = {() => setLiveTrack(!liveTrack)}>Live Tracking</button>
         <OilTempPlot oilTempData = {oilTempData}/>
-        </div>
+        </PlotDiv>
     )
 }

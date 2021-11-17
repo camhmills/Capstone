@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const pool = require("./model")
 const bcrypt = require('bcrypt');
+const jwt  =require('jsonwebtoken')
+
+require('dotenv').config();
 
 var app = express();
 
@@ -39,16 +42,17 @@ app.post('/userlogin', async (req, res) => {
         const { username, password } = req.body;
         const userinfo = await pool.query("SELECT * FROM userinfo")
         const jsonUsers = userinfo.rows
-        const user = jsonUsers.find(user => user.username == username)
+        const user = jsonUsers.find(user => user.username === username)
         if (user == null) {
-            return res.status(400).send('Cannot Find User')
+            return res.status(404).send('Cannot Find User')
         }
         try {
             if (await bcrypt.compare(password, user.password)) {
-                res.status(200).send(console.log('Success'))
+                const token = jwt.sign({loggedin: true}, process.env.JWTOKEN)
+                res.json({success: true, token: token})
             }
             else {
-                res.status(404).send(console.log('Login Failed'))
+                res.status(500).send(console.log('Login Failed'))
             }
         } catch {
             res.status(500).send()
@@ -58,6 +62,6 @@ app.post('/userlogin', async (req, res) => {
     }
 })
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log("Express Running")
 })

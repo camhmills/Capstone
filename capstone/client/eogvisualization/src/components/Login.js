@@ -9,17 +9,20 @@ export default function Login() {
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3001/userlogin", {
+            await fetch("http://localhost:3001/userlogin", {
                 method: "POST",
                 headers : { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
+            }).then(response => response.json()).
+            then(result => {
+                if (result.success == true) {
+                    const token = result.token
+                    localStorage.setItem('jsonwebtoken', token)
+                }
+                else {
+                    window.alert('Login Failed')
+                }
             })
-            if (response.ok) {
-                dispatch({type:"LOGIN"})
-            }
-            else {
-                window.alert("Login Failed. Please Try Again.")
-            }
         }
         catch (err) {
             console.log(err.message)
