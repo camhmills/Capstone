@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import logger from "redux-logger";
 import rootReducer from "./reducers/rootReducer";
+import jwt from 'jsonwebtoken'
 
 import { authVerify } from './dataGrab'
 
@@ -16,14 +17,16 @@ const store = createStore(rootReducer, composedEnhancer);
 
 const token = localStorage.getItem('jsonwebtoken');
 
+const authorization = () => {
+  const verified = jwt.verify(token, 'dexter')
+  console.log(verified)
+  store.dispatch({type: 'SUCCESS', payload: verified})
+}
+
 if (token) {
-  const fetchAuth = async () => {
-    let response = await authVerify(token)
-    store.dispatch({type: "SUCCESS", payload: response});
-    console.log('index auth works')
+  authorization()
 }
-fetchAuth();
-}
+
 
 ReactDOM.render(
     <Provider store = {store}>

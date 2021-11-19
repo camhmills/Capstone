@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import OilTemp from './components/plotcontainers/OilTemp';
 import InjValveOpen from './components/plotcontainers/InjValveOpen';
@@ -23,7 +23,6 @@ function App() {
   const injValveData = useSelector(state => state.InjValveOpenReducer)
   const loginStatus = useSelector(state => state.LoginReducer)
 
-  console.log(loginStatus)
 
   return (
     <Router>
