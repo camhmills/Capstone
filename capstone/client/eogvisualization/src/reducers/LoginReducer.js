@@ -1,12 +1,12 @@
 const initialState = { 
-    loggedin : false
+    loggedin: false
 };
 
 const LoginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "LOGIN":
+        case "SUCCESS":
             return { 
-                loggedin : true 
+                loggedin : action.payload.loggedin 
             };
         case "LOGOUT":
             return { 

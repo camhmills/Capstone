@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React, { useState } from 'react';
 import { FormContainer, FormDiv, InputStyle, SubmitButton } from './styled-components/FormStyle';
 
 export default function Login() {
-    const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({username: "", password: ""})
 
     const onSubmitForm = async (e) => {
@@ -13,8 +12,8 @@ export default function Login() {
                 method: "POST",
                 headers : { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
-            }).then(response => response.json()).
-            then(result => {
+            }).then(response => response.json())
+            .then(result => {
                 if (result.success == true) {
                     const token = result.token
                     localStorage.setItem('jsonwebtoken', token)
@@ -37,6 +36,7 @@ export default function Login() {
     return (
         <FormDiv>
             <FormContainer id = "userForm" onSubmit = {onSubmitForm}>
+                <h2>Login</h2>    
                 <InputStyle 
                     type = "text"
                     placeholder = "username" 

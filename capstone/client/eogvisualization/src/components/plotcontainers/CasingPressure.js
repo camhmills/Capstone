@@ -7,15 +7,15 @@ import CasingPressurePlot from '../plots/CasingPressurePlot';
 import { PlotDiv } from '../styled-components/PlotStyle';
 
 export default function CasingPressure(props) {
-    const { caseData } = props;
-    const dispatch = useDispatch();
+  const { caseData } = props;
+  const dispatch = useDispatch();
 
-    useEffect(() => { 
-    const fetchData = async () => {
-      let response = await casePressureData()
-      dispatch({type: "ADD_CASING_DATA", payload: response});
+  useEffect(() => { 
+  const fetchData = async () => {
+    let response = await casePressureData()
+    dispatch({type: "ADD_CASING_DATA", payload: response});
     }
-    fetchData()
+  fetchData()
     }, [])
 
     return (

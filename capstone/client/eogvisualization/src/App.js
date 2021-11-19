@@ -12,6 +12,7 @@ import { MainContainerDiv, SubContainer } from './components/styled-components/M
 import Navbar from './components/Navbar';
 import Registration from './components/Registration';
 import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const oilTempData = useSelector(state => state.OilTempReducer)
@@ -21,7 +22,8 @@ function App() {
   const flareData = useSelector(state => state.FlareTempReducer)
   const injValveData = useSelector(state => state.InjValveOpenReducer)
   const loginStatus = useSelector(state => state.LoginReducer)
-  console.log(loginStatus.loggedin)
+
+  console.log(loginStatus)
 
   return (
     <Router>
@@ -29,10 +31,11 @@ function App() {
       <Navbar/>
       <SubContainer>
         <Routes>
-          <Route path = '/oil' render = {() => loginStatus.loggedin ? <OilTemp oilTempData = {oilTempData}/> : <Login/>}/>
           <Route path = '/login' element = {<Login/>}/>
           <Route path = '/register' element = {<Registration/>}/>
-          <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
+          <Route path = '/oiltemp' element = {<PrivateRoute loginStatus = {loginStatus}/>}>
+            <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
+          </Route>
           <Route path = '/casingpressure' element = {<CasingPressure caseData = {caseData}/>}/>
           <Route path = '/flaretemp' element = {<FlareTemp flareData = {flareData}/>}/>
           <Route path = '/injvalveopen' element = {<InjValveOpen injValveData = {injValveData}/>}/>

@@ -6,7 +6,7 @@ import OilTempPlot from '../plots/OilTempPlot';
 import { PlotDiv } from '../styled-components/PlotStyle';
 
 export default function OilTemp(props) {
-    const {oilTempData} = props;
+    const { oilTempData } = props;
     const [liveTrack, setLiveTrack] = useState(false)
     const dispatch = useDispatch();
 

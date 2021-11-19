@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const pool = require("./model")
 const bcrypt = require('bcrypt');
-const jwt  =require('jsonwebtoken')
+const jwt  = require('jsonwebtoken')
 
 require('dotenv').config();
 
@@ -57,6 +57,29 @@ app.post('/userlogin', async (req, res) => {
         } catch {
             res.status(500).send()
         }
+    } catch (err) {
+        console.log(err.message)
+    }
+})
+
+app.post('/update', (req, res) => {
+    try {
+        const { username, password, newPassword } = req.body;
+        const updateInfo = pool.query("UPDATE userinfo SET password = 'newTestPass' WHERE username = 'testuser'")
+
+        res.send("Updated")
+    } catch (err) {
+        err.message
+    }
+})
+
+app.get('/auth', (req, res) => {
+    try {
+        const token = req.headers['authorization']
+
+        const verified = jwt.verify(token, process.env.JWTOKEN)
+
+        res.json(verified)
     } catch (err) {
         console.log(err.message)
     }

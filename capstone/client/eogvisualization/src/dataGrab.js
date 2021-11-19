@@ -191,5 +191,14 @@ export async function subscriptionData(){
     })
     console.log(data)
     let jsonData = await data.json();
-    console.log(jsonData)
+    return jsonData;
+}
+
+export const authVerify = async (token) => {
+    const response = await fetch("http://localhost:3001/auth", {
+          method: 'GET', 
+          headers : { "Content-Type": "application/json", "Authorization": token},
+        })
+    const authData = await response.json();
+    return authData;
 }
