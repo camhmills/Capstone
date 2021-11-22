@@ -3,7 +3,6 @@ import { FormContainer, FormDiv, InputStyle, SubmitButton } from './styled-compo
 import { Navigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import jwt from 'jsonwebtoken';
-require('dotenv').config()
 
 export default function Login(props) {
     const dispatch = useDispatch();
@@ -23,7 +22,7 @@ export default function Login(props) {
                     const token = result.token
                     localStorage.setItem('jsonwebtoken', token)
                     const authorization = () => {
-                        const verified = jwt.verify(token, process.env.JWTOKEN)
+                        const verified = jwt.verify(token, '94camISrad64')
                         dispatch({type: 'SUCCESS', payload: verified})
                     }
                     authorization();

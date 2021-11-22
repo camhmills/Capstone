@@ -11,7 +11,7 @@ var app = express();
 app.use(cors());
 app.use(express.json());
 
-const port = 3001;
+const PORT = 3001;
 
 app.post('/registration', async (req, res) => {
     try {
@@ -83,6 +83,6 @@ app.get('/auth', (req, res) => {
     }
 })
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log("Express Running")
 })
