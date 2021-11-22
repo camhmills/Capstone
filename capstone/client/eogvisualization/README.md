@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# GraphIt's Purpose
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Initially, this project was to visualize data from the EOG assessment found online. I'd like to further expand it to uptake user datasets, and visualize them as the user sees fit.
 
-## Available Scripts
+# Technologies Used
 
-In the project directory, you can run:
+GraphIt utilizes common libraries, and functions as a PERN stack (PostgreSQL, Express.js, Node.js, and React.js). Other technologies used in this project are GraphQL, boring-avatars,
+styled-components, react-redux, react-router, bcrypt, and jsonwebtoken.
 
-### `npm start`
+# Structure So Far
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+GraphIt is a fully-functional full-stack application. Users can register and receive authentication server, after which they are allowed to log-in after successful registration.
+A json web token maintains their credibility as long as they do not log out. All requests are handled either by EOG's API or by the server.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# General Functionality
 
-### `npm test`
+This project has most of the functionality a user would come to expect of a modern website. Most actions (such as logging in or registering) redirect the user to the appropriate page as events happen. The user can also change their password on the '/profile' page. Bcrypt maintains security for the database on the server side, and also checks passwords as requests are sent from the client to the server. The user can also easily view current visualized data on the '/home' page. A few minor pieces of user experience functionality are also embedded; certain buttons are disabled by default until their conditions are satisfied, notifying the user they must correctly fill out certain fields.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Weaknesses/Improvements
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+There are plenty of improvements I could make to this website. For example, allowing a user to upload their own data set, and choosing their preferred/suitable form of visualization.
+Another improvement I'd like to make includes adding authorization roles - such as an admin, moderator, and user. Different roles possess different tools to use on the website itself.
