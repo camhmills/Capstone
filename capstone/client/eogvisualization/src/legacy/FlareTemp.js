@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { flareTempData } from '../../dataGrab';
-import FlareTempPlot from '../plots/FlareTempPlot';
-import { PlotDiv } from '../styled-components/PlotStyle';
+import { flareTempData } from '../dataGrab';
+import FlareTempPlot from './FlareTempPlot';
+import { PlotDiv } from '../components/styled-components/PlotStyle';
 
 export default function FlareTemp(props) {
     const { flareData } = props;

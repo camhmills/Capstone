@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { casePressureData } from '../../dataGrab';
-import CasingPressurePlot from '../plots/CasingPressurePlot';
+import { casePressureData } from '../dataGrab';
+import CasingPressurePlot from './CasingPressurePlot';
 
-import { PlotDiv } from '../styled-components/PlotStyle';
+import { PlotDiv } from '../components/styled-components/PlotStyle';
 
 export default function CasingPressure(props) {
   const { caseData } = props;

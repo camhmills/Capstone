@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { injValveOpenData } from '../../dataGrab';
-import InjValveOpenPlot from '../plots/InjValveOpenPlot';
-import { PlotDiv } from '../styled-components/PlotStyle';
+import { injValveOpenData } from '../dataGrab';
+import InjValveOpenPlot from './InjValveOpenPlot';
+import { PlotDiv } from '../components/styled-components/PlotStyle';
 
 export default function CasingPressure(props) {
     const { injValveData } = props;

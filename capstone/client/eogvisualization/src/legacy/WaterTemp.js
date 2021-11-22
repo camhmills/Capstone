@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { waterData } from '../../dataGrab';
-import WaterTempPlot from '../plots/WaterTempPlot';
+import { waterData } from '../dataGrab';
+import WaterTempPlot from './WaterTempPlot';
 
 export default function WaterTemp(props) {
     const { waterTempData } = props;

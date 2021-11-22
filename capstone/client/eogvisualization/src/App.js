@@ -1,45 +1,32 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import OilTemp from './components/plotcontainers/OilTemp';
-import InjValveOpen from './components/plotcontainers/InjValveOpen';
-import FlareTemp from './components/plotcontainers/FlareTemp';
-import TubingPressure from './components/plotcontainers/TubingPressure';
-import WaterTemp from './components/plotcontainers/WaterTemp';
-import CasingPressure from './components/plotcontainers/CasingPressure';
 import { MainContainerDiv, SubContainer } from './components/styled-components/MainContainer';
 import Navbar from './components/Navbar';
 import Registration from './components/Registration';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
+import Home from './components/plotcontainers/Home';
+import Profile from './components/Profile';
 
 function App() {
-  const oilTempData = useSelector(state => state.OilTempReducer)
-  const caseData = useSelector(state => state.CasingPressureReducer)
-  const tubeData = useSelector(state => state.TubingPressureReducer)
-  const waterTempData = useSelector(state => state.WaterTempReducer)
-  const flareData = useSelector(state => state.FlareTempReducer)
-  const injValveData = useSelector(state => state.InjValveOpenReducer)
   const loginStatus = useSelector(state => state.LoginReducer)
-
 
   return (
     <Router>
       <MainContainerDiv>
-      <Navbar/>
+      <Navbar loginStatus={loginStatus}/>
       <SubContainer>
         <Routes>
-          <Route path = '/login' element = {<Login/>}/>
+          <Route path = '/login' element = {<Login loginStatus = {loginStatus}/>}/>
           <Route path = '/register' element = {<Registration/>}/>
-          <Route path = '/oiltemp' element = {<PrivateRoute loginStatus = {loginStatus}/>}>
-            <Route path = '/oiltemp' element = {<OilTemp oilTempData = {oilTempData}/>}/>
+          <Route path = '/home' element = {<PrivateRoute loginStatus = {loginStatus}/>}>
+            <Route path = '/home' element = {<Home />}/>
           </Route>
-          <Route path = '/casingpressure' element = {<CasingPressure caseData = {caseData}/>}/>
-          <Route path = '/flaretemp' element = {<FlareTemp flareData = {flareData}/>}/>
-          <Route path = '/injvalveopen' element = {<InjValveOpen injValveData = {injValveData}/>}/>
-          <Route path = '/tubingpressure' element = {<TubingPressure tubeData = {tubeData}/>}/>
-          <Route exact path = '/watertemp' element = {<WaterTemp waterTempData = {waterTempData}/>}/>
+          <Route path = '/profile' element = {<PrivateRoute loginStatus = {loginStatus}/>}>
+            <Route path = '/profile' element = {<Profile loginStatus = {loginStatus}/>}/>
+          </Route>
         </Routes>
       </SubContainer>
     </MainContainerDiv> 

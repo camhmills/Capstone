@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { tubingPressureData } from '../../dataGrab';
-import TubingPressurePlot from '../plots/TubingPressurePlot';
+import { tubingPressureData } from '../dataGrab';
+import TubingPressurePlot from './TubingPressurePlot';
 
 export default function TubingPressure(props) {
     const { tubeData } = props;

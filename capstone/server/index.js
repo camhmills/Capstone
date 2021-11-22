@@ -18,7 +18,6 @@ app.post('/registration', async (req, res) => {
         const { username, password, email } = req.body;
         const hashPass = await bcrypt.hash(password, 10)
         const newUser = await pool.query("INSERT INTO userinfo (username, password, email) VALUES ($1, $2, $3)", [username, hashPass, email]);
-
         res.json(newUser)
     } catch (err) {
         console.log(err.message);
@@ -30,12 +29,11 @@ app.delete('/deleteuser', async (req, res) => {
     try {
         const { username } = req.body;
         const delUser = await pool.query("DELETE FROM userinfo WHERE username = ($1)", [username]);
-        res.json(delUser)
+        res.json(delUser);
     } catch (err) {
-        console.log(err.message);
+        res.send(err.message)
     }
-    
-})
+})  
 
 app.post('/userlogin', async (req, res) => {
     try {
@@ -43,12 +41,12 @@ app.post('/userlogin', async (req, res) => {
         const userinfo = await pool.query("SELECT * FROM userinfo")
         const jsonUsers = userinfo.rows
         const user = jsonUsers.find(user => user.username === username)
-        if (user == null) {
+        if (user === null) {
             return res.status(404).send('Cannot Find User')
         }
         try {
             if (await bcrypt.compare(password, user.password)) {
-                const token = jwt.sign({loggedin: true}, process.env.JWTOKEN)
+                const token = jwt.sign({loggedin: true, username: user.username}, process.env.JWTOKEN)
                 res.json({success: true, token: token})
             }
             else {
@@ -62,14 +60,14 @@ app.post('/userlogin', async (req, res) => {
     }
 })
 
-app.post('/update', (req, res) => {
+app.post('/update', async (req, res) => {
     try {
-        const { username, password, newPassword } = req.body;
-        const updateInfo = pool.query("UPDATE userinfo SET password = 'newTestPass' WHERE username = 'testuser'")
-
-        res.send("Updated")
+        const { username, newPassword } = req.body;
+        const hashNewPass = await bcrypt.hash(newPassword, 10)
+        const updateInfo = await pool.query("UPDATE userinfo SET password = ($1) WHERE username = ($2)", [hashNewPass, username])
+        res.json(updateInfo)
     } catch (err) {
-        err.message
+        console.log(err.message)
     }
 })
 

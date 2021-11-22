@@ -34,7 +34,7 @@ export default function OilTempPlot(props) {
                         {
                             width: 1500,
                             height: 860, 
-                            title: 'Plotly', 
+                            title: '', 
                             color: '#FAFAFA',
                             paper_bgcolor: '#282c34',
                             plot_bgcolor: '#282c34',

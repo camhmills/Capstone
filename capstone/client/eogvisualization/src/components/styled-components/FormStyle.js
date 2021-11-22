@@ -22,7 +22,7 @@ margin: 5px;
 border: none;
 text-align: center;
 height: 25px;
-width: 250px;
+width: 260px;
 &:focus {
     outline: none;
 }
@@ -33,8 +33,12 @@ border: none;
 background-color: #f8cf2c;
 height: 50px;
 width: 125px;
-margin-top: 10px;
+margin: 10px;
+font-size: 18px;
 &:disabled {
     background-color: grey;
+}
+&:active {
+    background-color: #f1dd8d;
 }
 `

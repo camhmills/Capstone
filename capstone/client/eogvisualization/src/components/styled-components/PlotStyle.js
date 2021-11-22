@@ -7,3 +7,8 @@ justify-content: center;
 text-align: center;
 width: 100vw;
 `
+
+export const ViewDiv = styled.div`
+display: flex;
+justify-content: center;
+`

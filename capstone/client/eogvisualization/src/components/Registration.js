@@ -1,15 +1,19 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FormContainer, FormDiv, InputStyle, SubmitButton } from './styled-components/FormStyle';
 
 
 export default function Login() {
-
     const [formData, setFormData] = useState({ username: "", password: "", confirmPassword: "", email: "" });
-
+    const navigate = useNavigate();
     //buttuon disabled condition
     const buttonStatus = formData.password.length > 0 
     && formData.password === formData.confirmPassword
     && formData.email.search('@') !== -1;
+
+    const registerNav = () => {
+        navigate('/login');
+    }
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -19,23 +23,10 @@ export default function Login() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             })
-            console.log(response)
+            registerNav()
         } catch (err) {
             console.log(err.message)
         }
-    }
-
-    const clearForm = () => {
-        document.getElementById('userForm').reset();
-    }
-
-    const clearState = () => {
-        setFormData({ username: "", password: "", confirmPassword: "", email: "" });
-    }
-
-    const clearData = () => {
-        clearForm();
-        clearState();
     }
 
     return (
@@ -80,7 +71,7 @@ export default function Login() {
                             {...formData, [e.target.name]: e.target.value}
                         )}
                 />
-                <SubmitButton disabled = {!buttonStatus} onClick={() => clearForm()}>Submit</SubmitButton>
+                <SubmitButton disabled = {!buttonStatus}>Submit</SubmitButton>
             </FormContainer>
         </FormDiv>
     )
